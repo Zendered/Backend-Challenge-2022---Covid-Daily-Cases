@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+      "outDir": "dist",
+      "module": "commonjs",
+      "target": "ES2019",
+      "strict": true,
+      "sourceMap": true,
+      "lib": ["ESNext"],
+      "esModuleInterop": true,
+      "allowJs": true,
+      "baseUrl": ".",
+        "paths": {
+          "@/*": ["src/*"],
+          "@test/*": ["test/*"],
+        }
+  }
+}
