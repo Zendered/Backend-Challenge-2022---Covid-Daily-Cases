@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "date-fns": "^2.28.0",
     "express": "^4.17.3",
     "module-alias": "^2.2.2"
   },
