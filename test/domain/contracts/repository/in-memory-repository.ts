@@ -1,5 +1,6 @@
 import { ICovidVariantsDTO } from '@/domain/contracts/gateways/covid-variants-dto';
 import { ICovidVariantsRepository } from '@/domain/contracts/repository';
+import { isSameDay } from 'date-fns';
 
 export class InMemoryRepository implements ICovidVariantsRepository {
   constructor(private readonly repo: ICovidVariantsDTO[] = []) {}
@@ -10,7 +11,7 @@ export class InMemoryRepository implements ICovidVariantsRepository {
   }
 
   async showByDates(date: Date): Promise<ICovidVariantsDTO[]> {
-    const validDates = await this.repo.filter(covidDate => covidDate.date === date);
+    const validDates = await this.repo.filter(covidDate => isSameDay(covidDate.date, date));
     return validDates;
   }
 }
