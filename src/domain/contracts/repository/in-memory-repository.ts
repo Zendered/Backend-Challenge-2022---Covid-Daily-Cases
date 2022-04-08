@@ -5,8 +5,8 @@ import { isSameDay } from 'date-fns';
 export class InMemoryRepository implements ICovidVariantsRepository {
   constructor(private readonly repo: ICovidVariantsDTO[] = []) {}
 
-  async showAllDailyCases(day: number): Promise<ICovidVariantsDTO[]> {
-    const allCases = await this.repo.filter(covidCase => covidCase.date.getDate() === day - 1);
+  async showCasesOfTheDay(date: Date): Promise<ICovidVariantsDTO[]> {
+    const allCases = await this.repo.filter(covidCase => isSameDay(covidCase.date, date));
     return allCases;
   }
 
