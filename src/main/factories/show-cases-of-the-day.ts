@@ -1,9 +1,9 @@
-import { ShowCasesByDayController } from '@/application/controller/show-case-by-day';
+import { ShowCasesOfTheDayController } from '@/application/controller/show-case-of-the-day';
 import { ICovidVariantsDTO } from '@/domain/contracts/gateways';
-import { ShowCasesByDay } from '@/domain/usecases/show-cases-by-day';
+import { ShowCasesOfTheDay } from '@/domain/usecases/show-cases-of-the-day';
 import { InMemoryRepository } from '@/domain/contracts/repository/in-memory-repository';
 
-export const MakeShowCasesByDayController = (): ShowCasesByDayController => {
+export const MakeShowCasesOfTheDayController = (): ShowCasesOfTheDayController => {
   const covidVariants: ICovidVariantsDTO[] = [{
     location: 'Angola',
     date: new Date('2020-10-12'),
@@ -30,7 +30,7 @@ export const MakeShowCasesByDayController = (): ShowCasesByDayController => {
   }];
 
   const inMemoryRepository = new InMemoryRepository(covidVariants);
-  const usecase = new ShowCasesByDay(inMemoryRepository);
-  const controller = new ShowCasesByDayController(usecase);
+  const usecase = new ShowCasesOfTheDay(inMemoryRepository);
+  const controller = new ShowCasesOfTheDayController(usecase);
   return controller;
 };
