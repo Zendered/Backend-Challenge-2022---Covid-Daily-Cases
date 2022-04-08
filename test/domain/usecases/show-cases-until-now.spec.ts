@@ -72,10 +72,6 @@ describe('show cases by date use case', () => {
     const repo = new InMemoryRepository(covidCases);
     const useCase: IUseCase = new ShowCasesUntilNow(repo);
     const result: ICovidVariantsDTO[] = await useCase.perform('2020-10-17');
-    console.log(result[0]);
-    console.log(result[1]);
-    console.log(result[2]);
-
     expect(result[0].location).toEqual(covidCases[5].location);
     expect(result[1].location).toEqual(covidCases[0].location);
     expect(result[2].location).toEqual(covidCases[6].location);
