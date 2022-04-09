@@ -8,11 +8,11 @@ export const MongoHelper = {
   async disconnect(): Promise<void> {
     await this.client.close();
   },
-  async getCollection(name: string): Promise<Collection> {
-    const returnCollection = await this.client.db().collection(name);
+  async getCollection(cases: string): Promise<Collection> {
+    const returnCollection = await this.client.db().collection(cases);
     return returnCollection;
   },
-  async clearCollection(name: string): Promise<void> {
-    await this.client.db().collection(name).deleteMany({});
+  async clearCollection(cases: string): Promise<void> {
+    await this.client.db().collection(cases).deleteMany({});
   },
 };
