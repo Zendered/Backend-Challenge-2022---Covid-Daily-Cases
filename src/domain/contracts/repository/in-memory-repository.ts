@@ -16,4 +16,9 @@ export class InMemoryRepository implements ICovidVariantsRepository {
     const result = [...covidCase, ...validDates];
     return result;
   }
+
+  async allAvailableDate(): Promise<ICovidVariantsDTO[]> {
+    const allCases = await this.repo;
+    return [...allCases];
+  }
 }
