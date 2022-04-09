@@ -9,8 +9,6 @@ export class ShowCasesUntilNow implements IUseCase {
     const caseDate = new Date(date);
     const value = await this.repo.ShowCasesUntilNow(caseDate);
     const result:ICasesOfTheDay[] = value.reduce<ICasesOfTheDay[]>((acc, covidCase):ICasesOfTheDay[] => {
-      // eslint-disable-next-line no-debugger
-      debugger;
       const findCountry = acc.find(tracked => tracked.location === covidCase.location);
 
       if (findCountry) {
