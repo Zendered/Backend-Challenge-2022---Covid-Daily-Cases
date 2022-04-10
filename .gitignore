@@ -5,3 +5,4 @@ data
 .env
 covid-variants.csv
 globalConfig.json
+covid-cases.json
