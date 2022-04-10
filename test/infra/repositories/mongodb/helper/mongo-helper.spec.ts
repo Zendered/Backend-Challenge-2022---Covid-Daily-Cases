@@ -12,9 +12,7 @@ describe('mongodb covid cases repository', () => {
     await MongoHelper.disconnect();
   });
 
-  test('should return cases of the day', async () => {
-    console.log('');
-
+  test.only('should return cases of the day', async () => {
     const repo = new MongoDbRepository();
     const result = await repo.showCasesOfTheDay(new Date('2020-10-12'));
 
