@@ -26,8 +26,10 @@
     "@types/eslint": "^8.4.1",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.4.1",
+    "@types/migrate-mongo": "^8.2.0",
     "@types/module-alias": "^2.0.1",
     "@types/mongodb": "^4.0.7",
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^17.0.23",
     "@types/rimraf": "^3.0.2",
     "@types/supertest": "^2.0.12",
@@ -49,8 +51,10 @@
     "csvtojson": "^2.0.10",
     "date-fns": "^2.28.0",
     "express": "^4.17.3",
+    "migrate-mongo": "^9.0.0",
     "module-alias": "^2.2.2",
-    "mongodb": "^4.5.0"
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.2.10"
   },
   "_moduleAliases": {
     "@": "dist"
