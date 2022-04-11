@@ -1,0 +1,121 @@
+ola, meu nome é luiz gustavo, sou desenvolvedor jr back end e esse é o meu projeto do Backend Challenge 🏅 2022 - Covid Daily Cases.
+
+Entao, eu optei por usar os principios da arquitetura limpa, e tmb desenvolvi orientado a testes.
+
+primeiro vou mostrar a api funcionando e entao vou falar sobre o codigo, vamos la. 
+
+http://localhost:3333/ 
+aqui a rota home q deveria retornar uma string simples... nd d+.
+
+
+http://localhost:3333/cases/2020-08-31/count
+aqui o usuario escolheria uma data e o retorno deveria ser os casos de covid e suas variaveis q tiveram naquela data. 
+
+(caso de uso - show cases of the day) esse foi um pouco complicado, pq eu n estava mto acostumado a usar reduce, e tive q gastar ali um bom tempo pra aprender sobre. 
+
+entao aqui eu pego a data q o usario coloca e transformo ela em uma data de verdade pq ela vem como uma string e quando trasformo ela em uma data jogo ela pro repositorio
+
+mongodb-repository - showCasesOfTheDay
+primeiro procura na collection 'cases' do banco de dados
+
+esse result tras todos os dados do banco de dados
+
+e o allCases filtra todos os datos q tem a msm data informada pelo usuario
+como ela ja é uma data eu uso a biblioteca date-fns e uso a funçao isSameDay()
+ela me retorna um boleano e desse boleano eu filto as datas q forem igual a q o usurio passou.
+
+-voltando pro caso de uso-
+
+dentro do reduce eu primeiro vou procurar localizaçao q veio do covidCase e tmb a variant com a quantidade de casos q tiveram naquela data em todos os paises.
+
+agora o acc tem seu valor e essa variavel findCountry pode ser verdadeira
+
+quando essa variavel ser verdadeira (ela so vai ser verdadeira, se o pais do covidCase for igual o pais do tracked) nos vamos ver se o nome da variant do acc é igual a variant q esta vindo pelo covidCase 
+
+acc = accumulator
+
+caso o nome da variante seja o msm, vamos adiciar +1 nos casos da tal variant encontrada, e retornar o acc pra sair da funçao e começar o reduce novamente. 
+
+caso a variante tenha o nome diferente nos vamos adicionar um novo objeto com o nome e valor, dessa nova variante encontrada e retornalo.
+
+Esse caso de uso é isso. 
+
+proximo.
+
+http://localhost:3333/cases/2020-08-31/cumulative
+a proxima o usuario escolhe uma data e o retorno deve ser todos os casos q tiveram ate aquela determinada data. e somar o valor total dos acontecimentos.
+
+(caso de uso - show cases until now) 
+agora é o caso de uso de todos os casos de covid q aconteceram ate determinada data
+
+aqui o começo é a msm coisa, pega a data q o usuario informou e tranforma em data, da um new date() nela.
+no repositorio a funçao agora é diferente
+
+aqui eu usei o valor q vem da outra função (showCasesOfTheDay) pra ali embaixo ter um retorno de todos os dados. pq so o retorno n estava retornando a propria data do usuario
+e ali na variavel allCases usei a funçao IsBefore(tmb da lib date-fns) para saber se a data passada é anterior a passada
+
+aqui é praticamente a msm coisa, so o valor q mudar, q no caso tem q pegar o valor de acontecimentos atras e somar todos.
+
+como deu pra ver na hr q eu use a api... n consegui fazer exatamente a soma de todos.
+
+-voltando pro caso de uso- 
+
+aqui eu vejo se a localizaçao é a msm e se o nome das variants tmb são as msm.
+
+nesse total eu tive q transformar o valor vindo do covidCases no tipo Number
+pq o dado q veio pelo banco de dados veio como string, entao quando eu fazia a soma o valor era concatenado invez de somado (uma bela dor de cabeça pra ter entendido isso)
+
+seguindo
+
+nesse if enorme eu vejo se a localizaçao e variante sao as mesma q ja estao no acc
+se sim faço a soma do valor atual com o valor q esta no acc.
+se nao ele cria um array de objeto com os dados 
+
+se ele n cair em nenhum dos ifs ele vai dar um push no array q tem o seu pais e criar um obj com a nova variante.
+
+
+vamos pro proximo caso de uso.
+
+
+http://localhost:3333/dates
+e por ultimo, o usuario faz uma requisição e o retorno sao todas as datas validas pro usuario pesquisar
+
+(caso de uso - show all available dates)
+aqui o retorno sao todas as datas validas
+
+a funçao no repositorio agora é essa
+
+nada d+ retorna os dados e no use case vamos filtrar elas
+
+-voltando pro caso de uso-
+ 
+entao dentro do reduce eu criei essa funcao is SameDate, essa funçao eu criei usando a lib date-fns dnv. 
+
+aqui eu pego a data q veio pelo reduce e vejo se o dia mes e ano sao os msm,
+se forem os msm o retorno é verdadeiro e nao queremos isso.
+
+entao ele vai pra fora do if joga essa data pra dentro do array
+
+apartir dai podemos fazer as comparaçoes 
+
+quando o as datas n forem iguais, dou um push retorn ele indo pro proximo objeto do reduce.
+
+esse foram os casos de uso 
+
+Agora o codigo pra transformar o arquivo csv em um json
+aqui eu pego o aquivo em csv e transformo ele em json.
+
+do json eu jogo ele nessa migration, aqui eu leio o arquivo e tranformo ele em obj.
+
+migration é uma lib(migrate-mongo)
+ela usando o "npm run up:migration" ja pega roda esse funçao up adiciona o conteudo desse arquivo pro banco de dados, no caso estou usando o mongoDB Atlas como pedido 
+
+ela tem uma funçao q roda esse up automaticamente no heroku, entao eu ia dar deploy da api no heroku(tive problemas e não consegui a tempo) e todos os dados estariam lá sem mto esforço 
+
+
+
+
+
+e entao é isso o repositorio esta publico casos vcs tenham interesse em dar uma olhada mais a fundo. 
+
+essa foi a api Backend Challenge 🏅 2022 - Covid Daily Cases obrigado :)
