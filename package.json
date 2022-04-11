@@ -14,6 +14,7 @@
     "down:migration": "migrate-mongo down",
     "down:container": "docker-compose down",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
+    "test:int": "npm test -- --watch -c jest-integration-config.js",
     "dev": "node -r dotenv/config dist/main/server.js",
     "test:staged": "npm test -- --findRelatedTests",
     "test:ci": "npm test -- --coverage"
