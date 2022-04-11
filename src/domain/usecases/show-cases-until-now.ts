@@ -10,24 +10,24 @@ export class ShowCasesUntilNow implements IUseCase {
     const caseDate = new Date(date);
     const value = await this.repo.ShowCasesUntilNow(caseDate);
     const result:ICasesOfTheDay[] = value.reduce<ICasesOfTheDay[]>((acc, covidCase:ICovidVariantsDTO):ICasesOfTheDay[] => {
-      // descobre se a pais do "acc" findCountry é igual a do covidCase
       const findCountry = acc.find(tracked => tracked.location === covidCase.location);
+      const total = parseInt(covidCase.num_sequences_total as any, 10);
 
       if (findCountry) {
-        // descobre se a variante do findCountry é igual a do covidCase
         const findVariant = findCountry.variant.find(variant => variant.name === covidCase.variant);
+        const totalOfCases = parseInt(findVariant?.value as any, 10);
 
         if (findVariant && findCountry.location === acc[acc.length - 1].location && findCountry.variant[findCountry.variant.length - 1].name === acc[acc.length - 1].variant[findCountry.variant.length - 1].name) {
-          findVariant.value += covidCase.num_sequences_total;
+          findVariant.value = totalOfCases + total;
           return acc;
         }
 
         if (findVariant) {
-          findVariant.value += 1;
+          findVariant.value = totalOfCases + 1;
           return acc;
         }
 
-        findCountry.variant.push({ name: covidCase.variant, value: covidCase.num_sequences_total });
+        findCountry.variant.push({ name: covidCase.variant, value: total });
         return acc;
       }
 
@@ -35,7 +35,7 @@ export class ShowCasesUntilNow implements IUseCase {
         {
           location: covidCase.location,
           variant: [
-            { name: covidCase.variant, value: covidCase.num_sequences_total },
+            { name: covidCase.variant, value: total },
           ],
         }];
     }, []);
