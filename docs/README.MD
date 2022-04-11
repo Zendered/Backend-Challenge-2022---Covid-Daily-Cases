@@ -35,6 +35,7 @@
 ### subir o docker (talvez não funcione)
 1. subir docker:  para subir os containers da api e do banco de dados no docker  
 * caso não funcione e você saiba mexer com docker e consiga funcionar me avise :)
-* depoi de usar um `npm run up:comtainer` e olhar os logs `docker logs api-container -f` percebese q ele n esta usando o dotenv (não entendi o pq) 
+> [video de apresentaçao do projeto](https://www.loom.com/share/9266cb1822e24eb6bfe5b99f595b6212)
+> [texto de apresentaçao do projeto](https://github.com/Zendered/Backend-Challenge-2022---Covid-Daily-Cases/tree/main/docs/texto-de-apresentaçao-do-projeto)
+
 >  This is a challenge by [Coodesh](https://coodesh.com/)
-> Status: Developing ⚠️
