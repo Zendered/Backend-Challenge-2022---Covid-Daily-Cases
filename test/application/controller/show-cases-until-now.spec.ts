@@ -2,7 +2,7 @@ import { InMemoryRepository } from '@test/domain/contracts/repository/in-memory-
 import { IHttpRequest, IHttpResponse } from '@/application/helpers';
 import { ICovidVariantsDTO, IUseCase } from '@/domain/contracts/gateways';
 import { ShowCasesUntilNow } from '@/domain/usecases/show-cases-until-now';
-import { ShowCasesByDateController } from '@/application/controller/show-case-by-date';
+import { ShowCasesUntilNowController } from '@/application/controller/show-case-until-now';
 
 describe('show all cases by date controller', () => {
   const covidCases: ICovidVariantsDTO[] = [{
@@ -31,7 +31,7 @@ describe('show all cases by date controller', () => {
   }];
   const repo = new InMemoryRepository(covidCases);
   const useCase: IUseCase = new ShowCasesUntilNow(repo);
-  const controller = new ShowCasesByDateController(useCase);
+  const controller = new ShowCasesUntilNowController(useCase);
 
   test('should return status code 200 when returning cases relationated date 2020-10-12', async () => {
     const request: IHttpRequest = {
