@@ -115,7 +115,6 @@ ela tem uma funçao q roda esse up automaticamente no heroku, entao eu ia dar de
 
 
 
-
 e entao é isso o repositorio esta publico casos vcs tenham interesse em dar uma olhada mais a fundo. 
 
 essa foi a api Backend Challenge 🏅 2022 - Covid Daily Cases obrigado :)
