@@ -1,7 +1,7 @@
 import { IUseCase } from '@/domain/contracts/gateways';
 import { IHttpRequest, IHttpResponse, ok } from '../helpers';
 
-export class ShowCasesByDateController {
+export class ShowCasesUntilNowController {
   constructor(private readonly useCase: IUseCase) {}
 
   async handle(req: IHttpRequest): Promise<IHttpResponse> {
