@@ -7,6 +7,7 @@
     "build": "rimraf dist && tsc -p tsconfig-build.json",
     "make:covid-file": "node  dist/external/reed-csv/csv-to-json.js",
     "up:migration": "migrate-mongo up",
+    "heroku-postbuild": "npm run build && migrate-mongo up",
     "start": "node dist/main/server.js",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
