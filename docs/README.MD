@@ -29,9 +29,10 @@
 2. e entao assim que dados estiverem no banco use `npm run start`
 ### usando api
 1. testar api: você pode usar um [postman](https://www.postman.com/) ou o [insomnia](https://insomnia.rest/products/insomnia)
-2. casos do dia: ` [GET] http://localhost:3333/cases/:date/count` para receber os casos do dia informado (:date)
-3. casos ate a data informada: `[GET] http://localhost:3333/cases/:date/cumulative` para receber os caso do ate o mes informado (:date)
-4. meses disponiveis para pesquisa: `[GET] http://localhost:3333/dates:` para receber quais datas estao disponiveis
+2. ou pelo heroku: https://lit-bayou-90286.herokuapp.com/
+3. casos do dia: ` [GET] http://localhost:3333/cases/:date/count` para receber os casos do dia informado (:date)
+4. casos ate a data informada: `[GET] http://localhost:3333/cases/:date/cumulative` para receber os caso do ate o mes informado (:date)
+5. meses disponiveis para pesquisa: `[GET] http://localhost:3333/dates:` para receber quais datas estao disponiveis
 ### subir o docker
 1. mude a area `environment` no arquivo `docker-compose.yml` mude o `- PROD_MONGO_URL=mongodb+srv://<user>:<password>@<cluster>.hp8av.mongodb.net/<database>?retryWrites=true&w=majority` com os dados do mongodb Atlas
 2. subir docker: para subir os containers da api e do banco de dados no docker `npm run up:container`
