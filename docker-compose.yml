@@ -13,6 +13,8 @@ services:
     image: covid-cases
     restart: always
     command: npm start
+    environment:
+      - PROD_MONGO_URL=mongodb+srv://<user>:<password>@<cluster>.hp8av.mongodb.net/<database>?retryWrites=true&w=majority
     volumes:
       - ./dist:/usr/src/covid-daily-cases/dist
     ports:
