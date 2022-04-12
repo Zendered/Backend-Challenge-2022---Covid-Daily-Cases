@@ -32,10 +32,12 @@
 2. casos do dia: ` [GET] http://localhost:3333/cases/:date/count` para receber os casos do dia informado (:date)
 3. casos ate a data informada: `[GET] http://localhost:3333/cases/:date/cumulative` para receber os caso do ate o mes informado (:date)
 4. meses disponiveis para pesquisa: `[GET] http://localhost:3333/dates:` para receber quais datas estao disponiveis
-### subir o docker (talvez não funcione)
-1. subir docker:  para subir os containers da api e do banco de dados no docker  
-* caso não funcione e você saiba mexer com docker e consiga funcionar me avise :)
+### subir o docker
+1. mude a area `environment` no arquivo `docker-compose.yml` mude o `- PROD_MONGO_URL=mongodb+srv://<user>:<password>@<cluster>.hp8av.mongodb.net/<database>?retryWrites=true&w=majority` com os dados do mongodb Atlas
+2. subir docker: para subir os containers da api e do banco de dados no docker `npm run up:container`
+
+* caso não funcione e você saiba mexer com docker e consiga fazer funcionar me avise :)
 > [video de apresentaçao do projeto](https://www.loom.com/share/9266cb1822e24eb6bfe5b99f595b6212)
-> [texto de apresentaçao do projeto](https://github.com/Zendered/Backend-Challenge-2022---Covid-Daily-Cases/tree/main/docs/texto-de-apresentaçao-do-projeto)
+> [texto de apresentaçao do projeto](https://github.com/Zendered/Backend-Challenge-2022---Covid-Daily-Cases/blob/main/docs/texto-de-apresenta%C3%A7ao-do-projeto.txt)
 
 >  This is a challenge by [Coodesh](https://coodesh.com/)
